@@ -112,17 +112,21 @@ function Menu() {
 }
 
 function Pasta(props) {
+  const { pastaObj } = props;
+
   return (
-    <li className="pastas">
-      <img src={props.pastaObj.photoName} alt={props.pastaObj.name}></img>
+    <li className={`pastas ${pastaObj.soldOut ? 'sold-out' : ''}`}>
+      <img src={pastaObj.photoName} alt={pastaObj.name}></img>
       <div>
-        <h3>{props.pastaObj.name}</h3>
-        <p>{props.pastaObj.ingredients}</p>
-        <span>{props.pastaObj.price}</span>
+        <h3>{pastaObj.name}</h3>
+        <p>{pastaObj.description}</p>
+        <span>{pastaObj.price}</span>
+        {pastaObj.soldOut && <span className="sold-out-label">Sold Out</span>}
       </div>
     </li>
   );
 }
+
 
 function Button() {
   return <button className="btn">Order</button>;
